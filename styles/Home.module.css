@@ -4,7 +4,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 6rem;
-  /* min-height: 100vh; */
+  min-height: 100vh;
 }
 
 .h1 {
@@ -80,6 +80,12 @@
 
 .card .phoneImg {
   width: 100%;
+  height: auto;
+}
+
+.phoneDisplay {
+  max-width: 400px;
+  width: 50%;
   height: auto;
 }
 

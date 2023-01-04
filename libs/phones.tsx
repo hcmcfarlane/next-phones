@@ -4,7 +4,7 @@ const phones = ph.phones;
 
 export function getPhoneData(id: number) {
   const i = phones.findIndex((x) => x.id === id);
-
+  // console.log("phones[i]", phones[i]);
   return phones[i];
 }
 

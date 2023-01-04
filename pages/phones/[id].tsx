@@ -1,35 +1,32 @@
 import Head from "next/head.js";
-// TODO: add import statement here for 'getPhoneData' and 'getAllPhoneIds' fns
+import styles from "../../styles/Home.module.css";
 import { getPhoneData, getAllPhoneIds } from "../../libs/phones";
 
-type PhoneData = { id: number; model: string; price: number };
+//TODO: LAYOUT:
+//Don't particularly want all of 'main' to flex ...
+
+type PhoneData = { phoneData: { id: number; model: string; price: number } };
 type ParamData = { params: { id: number } };
 
 export async function getStaticProps({ params }: ParamData) {
   // TODO: Instead of this, fetch the matching record from the json data
-  const phoneData = getPhoneData(params.id);
-  //   const strData = JSON.stringify(phoneData);
+  const phoneData = getPhoneData(Number(params.id));
   return {
     props: { phoneData },
   };
 }
 
 export async function getStaticPaths() {
-  // TODO: This should fetch all the post ids from the JSON data
   const paths = getAllPhoneIds();
-  //   console.log(paths);
   return {
     paths,
     fallback: false,
   };
 }
 
-// TODO: Not sure set props properly...
 export default function Phone(phoneData: PhoneData) {
-  const phone = phoneData;
-  console.log("phoneData", phoneData);
-  console.log("type of", typeof phoneData);
-  console.log("phoneData.model", phoneData.model);
+  const phone = phoneData.phoneData;
+
   return (
     <>
       <Head>
@@ -38,8 +35,13 @@ export default function Phone(phoneData: PhoneData) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
+      <main className={styles.main}>
+        <img
+          className={styles.phoneDisplay}
+          src="https://m.media-amazon.com/images/I/614Gij3tGwL._AC_SX679_.jpg"
+        />
         <h2>{phone.model}</h2>
+        <p>Price: £{phone.price}</p>
       </main>
     </>
     //Insert page header from index (create a component for it)

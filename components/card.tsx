@@ -2,7 +2,7 @@ import Link from "next/link";
 import styles from "../styles/Home.module.css";
 type CardProps = { id: number; model: string; price: number };
 
-//TODO: Add an image
+//TODO: Add LINKS from card to phone page (and back again)
 
 export default function Card({ id, model, price }: CardProps) {
   return (

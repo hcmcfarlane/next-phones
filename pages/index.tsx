@@ -7,7 +7,7 @@ import Card from "../components/card";
 export default function Home() {
   // TODO: Need to do this as getStaticProps!!!!
   const phones = ph.phones;
-  console.log(phones);
+
   return (
     <>
       <Head>
