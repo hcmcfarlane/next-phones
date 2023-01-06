@@ -6,7 +6,7 @@ type CardProps = { id: number; model: string; price: number };
 
 export default function Card({ id, model, price }: CardProps) {
   return (
-    <Link href={`/posts/${id}`}>
+    <Link href={`/phones/${id}`}>
       <div className={styles.card}>
         <img
           className={styles.phoneImg}
