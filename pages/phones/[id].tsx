@@ -1,6 +1,7 @@
 import Head from "next/head.js";
 import styles from "../../styles/Home.module.css";
 import { getPhoneData, getAllPhoneIds } from "../../libs/phones";
+import CommonHeader from "../../components/header";
 
 //TODO: LAYOUT:
 //Don't particularly want all of 'main' to flex ...
@@ -36,6 +37,7 @@ export default function Phone(phoneData: PhoneData) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
+        <CommonHeader />
         <img
           className={styles.phoneDisplay}
           src="https://m.media-amazon.com/images/I/614Gij3tGwL._AC_SX679_.jpg"
