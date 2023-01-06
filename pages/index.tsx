@@ -1,12 +1,20 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import ph from "../libs/data.json";
+import phonesImport from "../libs/data.json";
 import Card from "../components/card";
+import CommonHeader from "../components/header";
 
-export default function Home() {
-  // TODO: Need to do this as getStaticProps!!!!
-  const phones = ph.phones;
+type PhoneData = {
+  // params: { phones: { id: number; model: string; price: number } };
+  phones: [{ id: number; model: string; price: number }];
+};
 
+export async function getStaticProps() {
+  const phones = phonesImport.phones;
+  return { props: { phones } };
+}
+
+export default function Home({ phones }: PhoneData) {
   return (
     <>
       <Head>
@@ -16,10 +24,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <h1 className={styles.h1}>Next Phones</h1>
+        <CommonHeader />
+        {/* <h1 className={styles.h1}>Next Phones</h1>
         <div className={styles.description}>
           <p>Lots of good phones at good and totally not-made-up prices :)</p>
-        </div>
+        </div> */}
 
         <div className={styles.grid}>
           {phones.map((p) => (
